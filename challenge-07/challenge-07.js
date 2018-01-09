@@ -1,5 +1,5 @@
 /*
-Crie um array com 5 items (tipos variados)  .
+Crie um array com 5 items (tipos variados).
 */
 var myArray = [ 'joao', 7, { bola: 'azul' }, null, NaN ];
 
