@@ -26,11 +26,11 @@
     propriedade, usando os valores passados por parâmetro.
     */
     var operation = {
-        '+': function ( num1, num2 ) { return num1 + num2 },
-        '-': function ( num1, num2 ) { return num1 - num2 },
-        '*': function ( num1, num2 ) { return num1 * num2 },
-        '/': function ( num1, num2 ) { return num1 / num2 },
-        '%': function ( num1, num2 ) { return num1 % num2 }
+        '+' : function ( num1, num2 ) { return num1 + num2; },
+        '-' : function ( num1, num2 ) { return num1 - num2; },
+        '*' : function ( num1, num2 ) { return num1 * num2; },
+        '/' : function ( num1, num2 ) { return num1 / num2; },
+        '%' : function ( num1, num2 ) { return num1 % num2; }
     };
 
     /*
@@ -44,11 +44,7 @@
     - O desafio é fazer o retorno sem usar "if" ou "switch".
     */
     function isOperatorValid( operator ) {
-       return operator === '+' || 
-        operator === '-' || 
-        operator === '*' || 
-        operator === '/' || 
-        operator === '%' ? true : false;  
+       return !!operation[ operator ];
     }
     /*
     Agora vamos criar a calculadora.
