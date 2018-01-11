@@ -50,6 +50,8 @@
             console.log( arr[i] );
         }
     }
+
+    allElements( books );
     
     console.log( '\nLivro que está sendo removido:' );
     /*
