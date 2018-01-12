@@ -45,13 +45,7 @@
     /*
     Mostre no console todos os livros.
     */
-    function allElements( arr ) {
-        for(var i = 0; i < arr.length; i++ ) {
-            console.log( arr[i] );
-        }
-    }
-
-    allElements( books );
+    console.log( books );
     
     console.log( '\nLivro que está sendo removido:' );
     /*
@@ -63,30 +57,26 @@
     /*
     Mostre no console os livros restantes.
     */
-    allElements( books );
+    console.log( books );
 
     /*
     Converta os objetos que ficaram em `books` para strings.
     */
-    // ?
+    books = JSON.stringify( books );
     console.log( '\nLivros em formato string:' );
-    for (var i = 0; i < books.length; i++ ) {
-        books[i] = JSON.stringify( books[i] );
-    }
 
     /*
     Mostre os livros nesse formato no console:
     */
-    allElements( books );
+    console.log( books );
 
     /*
     Converta os livros novamente para objeto.
     */
-    // ?
+    books = JSON.parse( books );
+    console.log( books );
     console.log( '\nAgora os livros são objetos novamente:' );
-    for (var i = 0; i < books.length; i++ ) {
-        books[i] = JSON.parse( books[i] );
-    }
+    
     /*
     Mostre no console todas as propriedades e valores de todos os livros,
     no formato abaixo:
@@ -108,14 +98,14 @@
     Juntando todos os itens do array, mostre no console seu nome.
     */
     // ?
-    console.log( myName.join('') );
+    console.log( myName.join( '' ) );
     console.log( '\nMeu nome invertido é:' );
 
     /*
     Ainda usando o objeto acima, mostre no console seu nome invertido.
     */
     // ?
-    console.log( myName.reverse() );
+    console.log( myName.reverse().join( '' ) );
     console.log( '\nAgora em ordem alfabética:' );
     /*
     Mostre todos os itens do array acima, odenados alfabéticamente.
