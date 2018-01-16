@@ -30,10 +30,7 @@
     Adicione 3 novos estados da região Norte no início do array e mostre no console.
     */
     console.log( '\nMais estados adicionados:' );
-    brasil.unshift( 'Amapá' );
-    brasil.unshift( 'Amazonas' );
-    brasil.unshift( 'Rondônia' );
-
+    brasil.unshift( 'Amapá', 'Amazonas', 'Rondônia' );
     console.log( brasil );
 
     /*
@@ -75,15 +72,13 @@
     Remova de `brasil` os estados do `sudeste`, colocando-os em uma variável
     chamada `newSudeste`.
     */
-    var newSudeste = brasil.splice( -4 );
+    var newSudeste = brasil.splice( 5 );
 
     /*
     Adicione os estados do `nordeste` ao array `brasil`. Esses estados devem
     ficar no mesmo nível que os estados já existentes, não em um array separado.
     */
-    nordeste.forEach( function( item ) {
-        brasil.push( item );
-    } ); 
+    brasil = brasil.concat( nordeste );
 
     /*
     Mostre no console os estados em `newSudeste`.
