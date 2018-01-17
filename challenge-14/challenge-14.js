@@ -12,8 +12,8 @@
     */
     console.log( 'Number Objects Array:' );
     var numberObjects = []
-    for(var i = 10, j = 1; i > numberObjects.length; j++) {
-        numberObjects.push({ number: j });
+    for(var i = 1; i <= 10; i++) {
+        numberObjects.push({ number: i });
     }
     console.log( numberObjects );
     /*
@@ -21,9 +21,8 @@
     números do array criado acima. Mostre esse novo array no console.
     */
     console.log( '\nJust Numbers:' );
-    var justNumbers = [];
-    numberObjects.forEach( function( item ) {
-        justNumbers.push( item.number );
+    var justNumbers = numberObjects.map( function(item) {
+      return item.number;
     } );
     console.log( justNumbers );
     /*
@@ -35,7 +34,6 @@
     var justMod2Or3 = justNumbers.filter( function( item ) {
         return item % 2 === 0 || item % 3 === 0;
     } );
-    
     console.log( justMod2Or3 );
     /*
     Declare uma variável chamada operation que receba, do array criado acima,
@@ -47,8 +45,8 @@
     */
     console.log( '\nOperation:' );
     var operation = justMod2Or3.reduce( function( acumulador, atual ) {
-        return acumulador * atual;
-    }, 1 );
+        return ( acumulador + 1 ) * atual;
+    }, 0 );
     console.log( operation );
 
     /*
@@ -58,8 +56,8 @@
     */
     console.log( '\nOperation 2:' );
     var operation2 = justMod2Or3.reduceRight( function( acumulador, atual ) {
-        return acumulador * atual;
-    }, 1 );
+        return ( acumulador + 1 ) * atual;
+    }, 0 );
     console.log( operation2 );
     /*
     Crie um array chamado `name`. Cada elemento desse array deve ser uma sílaba
@@ -70,10 +68,10 @@
     falada, como se você estivesse falando em código xD
     */
     console.log( '\nSeu nome na língua do "P":' );
-    var name = [ 'J', 'o', 'ã', 'o' ];
+    var name = [ 'Jo', 'ão' ];
     var result = name.reduce( function( acumulador, atual ) {
-        return acumulador + atual + 'p';
-    } );
+        return  acumulador + 'P' + atual;
+    }, '');
     console.log( result );
     /*
     Crie uma variável chamada `inversedName`, que reduzirá o array em uma string
@@ -100,22 +98,27 @@
     o que acontece ;)
     */
     console.log( '\nExiste um { number: 2 } em numberObjects?' );
-    result = numberObjects.indexOf( { number: 2 } ) !== -1 ? 'Existe um objeto { number: 2 } em numberObjects!'
-    : 'Não existe um objeto { number: 2 } em numberObjects :(';
-    console.log( result, '\nO que a contece é que ele varre o array verificando se o array contem o elemento passado na função indexOf se sim ele retorna o indice se não ele retorna -1' );
+    if (numberObjects.indexOf( { number: 2 } ) > -1) {
+      console.log( 'Existe um objeto { number: 2 } em numberObjects!' );
+    } else {
+      console.log( 'Não existe um objeto { number: 2 } em numberObjects :(' );
+    }
+    console.log( '\nNão encontra porque objetos são diferentes um do outro, a não ser que sejam passados por referência' );
     /*
     Fazendo o mesmo do exercício acima, mas começando a buscar do último índice,
     será que obtemos um resultado diferente? Faça a busca a partir do índice 2.
     */
     console.log( '\nE buscando a partir do último índice, o { number: 2 } existe?' );
-    result = numberObjects.lastIndexOf( { number: 2 }, 2 ) !== -1 ? 'Existe um objeto { number: 2 } em numberObjects!'
-    : 'Não existe um objeto { number: 2 } em numberObjects :(';
-
-    console.log( result );
-    /*
+     if (numberObjects.lastIndexOf( { number: 2 }, 2 ) > -1) {
+      console.log( 'Existe um objeto { number: 2 } em numberObjects!' );
+    } else {
+      console.log( 'Não existe um objeto { number: 2 } em numberObjects :(' );
+    }    /*
     Verifique se `justMod2Or3` é um array. Se for, mostre-o no console, no
     formato de String.
     */
     console.log( '\njustMod2Or3 é um array? Se for, a representação dele em String é:' );
-    Array.isArray( justMod2Or3 ) ? console.log( justMod2Or3.toString() ) : '';
+    if(Array.isArray( justMod2Or3 )) {
+      console.log( justMod2Or3.toString() )
+    }
 })();
