@@ -27,14 +27,14 @@
     this.lastName = lastName;
     this.age = age;
     this.getFullName = function getFullName() {
-      return this.name + this.lastName;
-    }
+      return this.name + ' ' + this.lastName;
+    };
     this.getAge = function getAge() {
       return this.age;
-    }
+    };
     this.addAge = function addAge() {
-      return this.age = arguments[0];
-    }
+      this.age += arguments[0];
+    };
     return this;
   }
 
