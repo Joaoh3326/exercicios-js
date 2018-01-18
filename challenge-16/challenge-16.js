@@ -37,9 +37,7 @@
     var fullName = 'joao-henrique-gomes';
     console.log( fullName );
     console.log( fullName.split('-').map(function(item) {
-        var newName = item.split('');
-        newName[0] = newName[0].toLocaleUpperCase();
-        return newName.join('');
+        return item.charAt(0).toUpperCase() + item.slice(1);
     }).join(' ') );
 
     /*
