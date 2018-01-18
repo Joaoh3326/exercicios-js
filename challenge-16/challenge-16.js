@@ -17,9 +17,13 @@
     */
     console.log( 'As letras do seu nome:' );
     var name = 'João';
-    name.split('').map(function(item, index) {
-        console.log( item + ' é a ' + ( index + 1 ) + ' letra do meu nome.' );
-    });
+    for( var i = 0, len = name.length; i < len; i++ ) {
+        console.log( name[i] + ' é a ' + ( i + 1 ) + ' letra do meu nome.' ); 
+    }
+
+    // name.split('').forEach(function(item, index) {
+    //     console.log( item + ' é a ' + ( index + 1 ) + ' letra do meu nome.' );
+    // });
 
     /*
     - Declare uma variável chamada `fullName`, que receba seu nome completo,
