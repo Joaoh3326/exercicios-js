@@ -31,33 +31,11 @@
     Mostre o resultado no console.
     */
     console.log( '\nFormatando CPFs corretamente:' );
-    console.log( cleanCPF("049-214 3421-1").match(/\d{1,3}/g).reduce(function(acumulado, atual) {
-        if( atual.length === 3 ) {
-            return acumulado + '.' + atual;
-        }
-        return acumulado + '-' + atual; 
-    }) );
+    console.log( cleanCPF("049-214 3421-1").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4') );
+    console.log( cleanCPF("210.458.522-05").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4') );
+    console.log( cleanCPF("735 500 794 - 22").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4') );
+    console.log( cleanCPF("101.123-131x32").replace(/(\d{3})(\d{3})(\d{3})(\d{2})/g, '$1.$2.$3-$4') );
 
-    console.log( cleanCPF("210.458.522-05").match(/\d{1,3}/g).reduce(function(acumulado, atual) {
-        if( atual.length === 3 ) {
-            return acumulado + '.' + atual;
-        }
-        return acumulado + '-' + atual; 
-    }) );
-
-    console.log( cleanCPF("735 500 794 - 22").match(/\d{1,3}/g).reduce(function(acumulado, atual) {
-        if( atual.length === 3 ) {
-            return acumulado + '.' + atual;
-        }
-        return acumulado + '-' + atual; 
-    }) );
-
-    console.log( cleanCPF("101.123-131x32").match(/\d{1,3}/g).reduce(function(acumulado, atual) {
-        if( atual.length === 3 ) {
-            return acumulado + '.' + atual;
-        }
-        return acumulado + '-' + atual; 
-    }) );
 
     /*
     Crie uma expressão regular que faça match com as palavras "junho" ou "julho",
@@ -71,7 +49,7 @@
     ["junho", "julho"]
     */
     console.log( '\nMatch com as palavras "junho" ou "julho" para a frase "Os meses de janeiro, junho e julho começam com a letra j.":' );
-    console.log( 'Os meses de janeiro, junho e julho começam com a letra j.'.match(/ju\w{3}/g) );
+    console.log( 'Os meses de janeiro, junho e julho começam com a letra j.'.match(/ju\w{3}/g) ); // /ju[nl]ho/ tbm é valido!
 
     /*
     Crie uma expressão regular que faça o match com a abertura de uma tag
@@ -121,5 +99,6 @@
     */
     console.log( '\nFazer replace dos textos das tags:' );
     // ?
-    console.log('<h1>Título da página</h1><p>Este é um parágrafo</p><footer>Rodapé</footer>'.match(/[^<>\/]/g))
+    console.log('<h1>Título da página</h1><p>Este é um parágrafo</p><footer>Rodapé</footer>'
+        .replace(/<(\w+)>([^<]+)<\/\w+>/g, '<$1>O texto dentro da tag "$1" é "$2"</$1>\n'))
 })();
