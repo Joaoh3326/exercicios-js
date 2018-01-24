@@ -18,7 +18,7 @@
     console.log( 'As letras do seu nome:' );
     var name = 'João';
     for( var i = 0, len = name.length; i < len; i++ ) {
-        console.log( name[i] + ' é a ' + ( i + 1 ) + ' letra do meu nome.' ); 
+        console.log( name[i] + ' é a ' + ( i + 1 ) + ' letra do meu nome.' );
     }
 
     // name.split('').forEach(function(item, index) {
@@ -40,7 +40,7 @@
     console.log( '\nNome convertido à partir de um slug:' );
     var fullName = 'joao-henrique-gomes';
     console.log( fullName );
-    console.log( fullName.split('-').map(function(item) {
+    console.log( fullName.split( '-' ).map(function(item) {
         return item.charAt(0).toUpperCase() + item.slice(1);
     }).join(' ') );
 
@@ -54,14 +54,18 @@
     5 nomes foi somente uma sugestão ;)
     */
     console.log( '\nMeus amigos:' );
-    var namesMyFriends = ['Joao', 'Henrique', 'Gomes'];
-    console.log(namesMyFriends.join(' e ').replace(' e ', ', ') + ' são meus amigos.')
+    var namesMyFriends = ['Joao', 'Henrique', 'Gomes', 'José', 'Maria'];
+    console.log(namesMyFriends.reduce(function(acumulado, atual, index) {
+      var separator = namesMyFriends.length - 1 === index ? ' e ' : ', ';
+      return acumulado + separator + atual;
+    }).concat(' são meus amigos.'));
     /*
     Usando o replace(), faça a string "Roberto" virar "Roberta".
     Mostre o resultado no console.
     */
     console.log( '\nEra "Roberto", agora é:' );
-    console.log('roberto', 'roberto'.split('o').join('a').replace('a', 'o') );
+    // console.log('roberto', 'roberto'.split('o').join('a').replace('a', 'o') );
+    console.log( 'Roberto'.replace( 'to', 'ta') );
 
     /*
     Mostre no console a parte "nando" da string "Fernando". Use o método que

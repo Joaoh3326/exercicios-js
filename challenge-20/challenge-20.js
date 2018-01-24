@@ -16,14 +16,10 @@
     nome, `username` deve receber "Desconhecido".
     Com a resposta, mostre um alert com a mensagem "Bem vindo [USERNAME]!"
     */
-    var username = wind.prompt( 'Qual o seu Nome?' );
-    if( username ) {
-        wind.alert('Bem vindo ' + username);
-    } else {
-        username = 'Desconhecido';
-        wind.alert('Bem vindo ' + username);
-    }
-        
+    var username = wind.prompt( 'Qual o seu Nome?' ) || 'Desconhecido';
+    alert('Bem vindo ' + username);
+
+
 
     /*
     Agora, pergunte ao usuário "Qual o seu e-mail?", atribuindo o resultado à
@@ -36,28 +32,28 @@
     `$inputUsername`.
     */
     var $inputUsername = doc.querySelector( 'input[type="text"]' );
-    console.log($inputUsername)
+    console.log( $inputUsername );
 
     /*
     - Selecione o input de "Email", atribuindo-o à uma variável chamada
     `$inputEmail`.
     */
     var $inputEmail = doc.querySelector( 'input[type="email"]' );
-    console.log($inputEmail)
+    console.log( $inputEmail );
 
     /*
     - Selecione o campo de "Mensagem", atribuindo-o à uma variável chamada
     `$message`.
     */
     var $message = doc.querySelector( 'textarea' );
-    console.log($message)
+    console.log( $message );
 
     /*
     - Selecione o botão de envio do formulário, atribuindo-o à uma variável
     chamada `$button`.
     */
     var $button = doc.querySelector( 'button' );
-    console.log($button)
+    console.log( $button );
 
     /*
     Preencha os campos de "Nome" e "Email" que estão no documento com os valores
@@ -92,16 +88,17 @@
     */
     $button.addEventListener( 'click', function(event) {
         event.preventDefault();
-        if ( !$inputUsername.value ) 
-            wind.alert( 'Preencha o nome do usuário!' );
-        else if ( !$inputEmail.value )
-            wind.alert( 'Preencha o e-mail!' );
-        else if ( !$message.value )
-            wind.alert( 'Preencha a mensagem!' );
-        else if ( !isValidEmail( $message.value ) )
-            wind.alert( 'Entre com um e-mail válido!' );
-        else
-            wind.confirm( 'Tem certeza que deseja enviar o formulário?' ) ? wind.alert( 'Enviado com sucesso!' ) : wind.alert( 'Não enviado.' );
+        if ( !$inputUsername.value )
+          return  wind.alert( 'Preencha o nome do usuário!' );
+        if ( !$inputEmail.value )
+          return  wind.alert( 'Preencha o e-mail!' );
+        if ( !isValidEmail( $message.value ) )
+          return  wind.alert( 'Entre com um e-mail válido!' );
+        if ( !$message.value )
+          return  wind.alert( 'Preencha a mensagem!' );
+        if ( !wind.confirm( 'Tem certeza que deseja enviar o formulário?' ) )
+          return wind.alert( 'Não enviando!' );
+        return wind.alert( 'Enviado com sucesso!' );
     }, false );
 
     /*
@@ -131,7 +128,7 @@
         - "agua_@evida.br.com"
     */
     function isValidEmail( email ) {
-        return /^[\w.+]+@\w+.[a-z]{2,}(?:.[Aa-z]{2})?/gi.test( email );
+        return /^[\w.+]+@\w+\.\w{2,}(?:\.\w{2})?$/g.test( email );
     }
 
     var arrValidos = [ "meu.email+categoria@gmail.com", "juca_malandro@bol.com.br", "pedrobala@hotmail.uy", "sandro@culinaria.dahora" ];
