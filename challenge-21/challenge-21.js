@@ -15,32 +15,27 @@ usar o nome que achar melhor, desde que ele seja semântico, ou seja, o nome
 dado ao elemento HTML deve definir o que o elemento é ou o que ele faz.
 */
 (function( window, document ) {
-    var $crono = document.querySelector( 'input[type="text"]' );
-    var $start = document.querySelector( 'button[data-start]' );
-    var $reset = document.querySelector( 'button[data-reset]' );
-    var $stop = document.querySelector( 'button[data-stop]' );
+    var $timer = document.querySelector( '[data-js="timer"]' );
+    var $start = document.querySelector( '[data-js="start"]' );
+    var $reset = document.querySelector( '[data-js="reset"]' );
+    var $stop = document.querySelector( '[data-js="stop"]' );
+    var interval;
 
-    var counter = 0;
-    var time;
-    console.log( $crono, $start, $reset, $stop );
-
-    function startWatch() {
-        time = setTimeout(function() {
-            $crono.value = counter++;
-            startWatch();
-        }, 100);
+    function starTimer() {
+        $timer.value = +$timer.value + 1;
+        interval = setTimeout(starTimer, 100);
     }
 
-    function resetWatch() {
-        counter = 0;
-        $crono.value = counter;
+    function stopTimer() {
+        clearTimeout(interval);
     }
 
-    function stopWatch() {
-        return clearTimeout(time);
+    function resetTimer() {
+        $timer.value = 0;
+        stopTimer();
     }
 
-    $start.addEventListener( 'click', startWatch, false );
-    $reset.addEventListener( 'click', resetWatch, false );
-    $stop.addEventListener( 'click', stopWatch, false );
+    $start.addEventListener( 'click', starTimer, false );
+    $stop.addEventListener( 'click', stopTimer, false );
+    $reset.addEventListener( 'click', resetTimer, false );
 })(window, document);
