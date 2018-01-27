@@ -42,10 +42,9 @@
   */
   function sum() {
     console.log( arguments );
-    var result = Array.prototype.reduce.call(arguments, function(acumulado, atual) {
+    return Array.prototype.reduce.call(arguments, function(acumulado, atual) {
       return acumulado + atual;
     });
-    return result;
   }
 
   /*
@@ -77,10 +76,12 @@
   */
   console.log( '\nFunção que limpa entrada do usuário (somente números):' );
   function justNumbers ( numbers ) {
-    return numbers.match(/\d/g).map(function(number) {
-      return +number;
+    return numbers.match(/\d+/g).map(function(number) {
+      return Number(number); //use Number() ou + na frente do valor para conversão;
     });
   }
+
+  console.log( justNumbers.toString() );
   /*
   Usando a função acima, faça a limpeza dos valores entrados pelo usuário,
   atribuindo o resultado à uma variável `numbers`.
@@ -93,6 +94,6 @@
   números desse array e mostre o resultado no console.
   */
   console.log( '\nSomar números entrados pelo usuário:' );
-  console.log( sum.apply(null, numbers ) );
+  console.log( sum.apply( sum, numbers ) );
 
 })(window, document);
