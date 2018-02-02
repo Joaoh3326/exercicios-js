@@ -23,31 +23,32 @@
   */
   // ?
 
-  function DOM ( element ) {
-    this.element = doc.querySelectorAll( element );
+  function DOM ( elements ) {
+    this.element = document.querySelectorAll( elements );
   }
 
-  DOM.prototype.on = function( event, callback ) {
+  DOM.prototype.on = function on( eventType, callback ) {
     Array.prototype.forEach.call(this.element, function(elementDom) {
-      elementDom.addEventListener( event, callback, false );
+      elementDom.addEventListener( eventType, callback, false );
     });
   }
 
-  DOM.prototype.off = function( event, callback ) {
+  DOM.prototype.off = function off( eventType, callback ) {
     Array.prototype.forEach.call(this.element, function(elementDom) {
-      elementDom.removeEventListener( event, callback, false );
+      elementDom.removeEventListener( eventType, callback, false );
     });
   }
 
-  DOM.prototype.get = function() {
+  DOM.prototype.get = function get() {
     return this.element;
   }
 
   var $a = new DOM('[data-js="link"]');
 
-  $a.on('click', function(e) {
+  $a.on('click', function handleClick(e) {
     e.preventDefault();
     console.log('clicou');
+    $a.off('click', handleClick);
   });
 
   console.log('Elementos selecionados:', $a.get());
